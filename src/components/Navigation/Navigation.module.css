@@ -1,0 +1,13 @@
+.navigation {
+  border-bottom: 2px solid black;
+  padding: 15px 10px;
+}
+.navigationContainer {
+  display: flex;
+  gap: 15px;
+}
+.navigationLink {
+  font-size: 25px;
+  font-weight: 600;
+  color: inherit;
+}

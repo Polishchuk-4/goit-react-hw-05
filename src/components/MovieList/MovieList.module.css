@@ -1,0 +1,15 @@
+.movieList {
+  padding: 0 25px;
+  font-size: 18px;
+}
+
+.movieListItemContainer {
+  list-style: circle;
+}
+.movieListTitle {
+}
+
+.movieListTitle:hover {
+  color: blue;
+  text-decoration: underline;
+}
