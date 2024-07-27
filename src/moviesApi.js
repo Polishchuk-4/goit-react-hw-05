@@ -24,3 +24,13 @@ export const fetchInputMovies = async (query) => {
   const response = await axios.get(urlQuery, options);
   return response.data.results;
 };
+export const fetchCastMovie = async (id) => {
+  const urlCast = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`;
+  const responce = await axios.get(urlCast, options);
+  return responce.data.cast;
+};
+export const fetchReviewsMovie = async (id) => {
+  const urlReviews = `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`;
+  const response = await axios.get(urlReviews, options);
+  return response.data.results;
+};

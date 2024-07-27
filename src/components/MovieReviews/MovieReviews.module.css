@@ -1,0 +1,12 @@
+.movieReviewsList {
+}
+.movieReviewsListItem {
+  padding: 5px;
+}
+.movieReviewsListTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.movieReviewsListText {
+}

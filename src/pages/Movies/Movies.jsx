@@ -10,11 +10,12 @@ import css from "./Movies.module.css";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-  const [seaechParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") ?? "";
+
   useEffect(() => {
     async function getMovie() {
-      const response = await fetchInputMovies(inputValue);
+      const response = await fetchInputMovies(query);
       return response;
     }
     getMovie()
@@ -28,10 +29,9 @@ export default function Movies() {
       .finally(() => {
         console.log("final");
       });
-  }, [inputValue]);
+  }, [query]);
 
   const handleSubmit = (value) => {
-    setInputValue(value);
     setSearchParams({ query: value });
   };
 

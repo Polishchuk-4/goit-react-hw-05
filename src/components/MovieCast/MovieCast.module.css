@@ -1,0 +1,14 @@
+.movieCastList {
+  list-style: circle;
+  padding: 15px;
+}
+.movieCastListItem {
+}
+.movieCastImg {
+  width: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.movieCastText:not(:last-child) {
+  margin-bottom: 10px;
+}

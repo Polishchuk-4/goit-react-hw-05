@@ -1,10 +1,11 @@
 .movieDetails {
-  /* display: flex;
-  column-gap: 20px; */
 }
 .movieDetailsContainer {
   display: flex;
   column-gap: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid black;
 }
 .movieDetailsImg {
   width: 250px;
@@ -32,4 +33,13 @@
   column-gap: 10px;
 }
 .movieDetailsListItem {
+}
+
+.movieDetailsListInfo {
+  list-style: circle;
+  padding: 15px 30px;
+}
+
+.movieDetailsAdditionalInfo {
+  border-bottom: 2px solid black;
 }

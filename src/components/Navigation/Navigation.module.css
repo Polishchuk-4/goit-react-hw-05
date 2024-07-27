@@ -11,3 +11,6 @@
   font-weight: 600;
   color: inherit;
 }
+.active {
+  color: blue;
+}

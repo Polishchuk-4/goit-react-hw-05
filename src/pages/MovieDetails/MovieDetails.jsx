@@ -1,5 +1,7 @@
 import { fetchMovieById } from "../../moviesApi";
 import { Link } from "react-router-dom";
+import MovieCast from "../../components/MovieCast/MovieCast";
+import MovieReviews from "../../components/MovieReviews/MovieReviews";
 
 import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -11,7 +13,8 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState("");
   const location = useLocation();
   const backLinkHref = location.state ?? "/";
-  console.log(backLinkHref);
+  const [showCast, setShowCast] = useState(false);
+  const [showReviews, setShowReviews] = useState(false);
 
   useEffect(() => {
     async function getMovie() {
@@ -28,6 +31,16 @@ export default function MovieDetails() {
 
   const releaseYear = new Date(movie.release_date).getFullYear();
   const popularity = Math.floor(movie.popularity / 100);
+
+  function changeShowValue(whosShow) {
+    if (whosShow === "cast") {
+      setShowCast(true);
+      setShowReviews(false);
+    } else if (whosShow === "reviews") {
+      setShowCast(false);
+      setShowReviews(true);
+    }
+  }
 
   return (
     <main className={css.movieDetails}>
@@ -62,6 +75,21 @@ export default function MovieDetails() {
               </ul>
             </div>
           </div>
+          <div className={css.movieDetailsAdditionalInfo}>
+            <p className={css.movieDetailsText}>Additional information</p>
+            <ul className={css.movieDetailsListInfo}>
+              <li>
+                <button onClick={() => changeShowValue("cast")}>Cast</button>
+              </li>
+              <li>
+                <button onClick={() => changeShowValue("reviews")}>
+                  Reviews
+                </button>
+              </li>
+            </ul>
+          </div>
+          {showCast && <MovieCast castId={movieId} />}
+          {showReviews && <MovieReviews reviewsId={movieId} />}
         </>
       ) : (
         <p>Loading...</p>
