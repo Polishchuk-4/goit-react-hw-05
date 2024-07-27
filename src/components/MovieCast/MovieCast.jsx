@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { fetchCastMovie } from "../../moviesApi";
+import { useParams } from "react-router-dom";
+
 import css from "./MovieCast.module.css";
 
-export default function MovieCast({ castId }) {
+export default function MovieCast() {
   const [cast, setCast] = useState([]);
+  const { movieId } = useParams();
 
   useEffect(() => {
     async function getCast() {
       try {
-        const responce = await fetchCastMovie(castId);
+        const responce = await fetchCastMovie(movieId);
         console.log(responce);
         setCast(responce);
       } catch (e) {

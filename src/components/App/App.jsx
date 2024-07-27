@@ -8,6 +8,8 @@ const NotFound = lazy(() => import("../../pages/NotFound/NotFound.jsx"));
 const MovieDetails = lazy(() =>
   import("../../pages/MovieDetails/MovieDetails.jsx")
 );
+const MovieCast = lazy(() => import("../MovieCast/MovieCast.jsx"));
+const MovieReviews = lazy(() => import("../MovieReviews/MovieReviews.jsx"));
 
 import css from "./App.module.css";
 
@@ -19,7 +21,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:movieId" element={<MovieDetails />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

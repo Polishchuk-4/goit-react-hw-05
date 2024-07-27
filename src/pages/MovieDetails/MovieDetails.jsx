@@ -1,9 +1,7 @@
 import { fetchMovieById } from "../../moviesApi";
-import { Link } from "react-router-dom";
-import MovieCast from "../../components/MovieCast/MovieCast";
-import MovieReviews from "../../components/MovieReviews/MovieReviews";
+import { Link, Outlet } from "react-router-dom";
 
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import css from "./MovieDetails.module.css";
@@ -13,8 +11,7 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState("");
   const location = useLocation();
   const backLinkHref = location.state ?? "/";
-  const [showCast, setShowCast] = useState(false);
-  const [showReviews, setShowReviews] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getMovie() {
@@ -33,12 +30,13 @@ export default function MovieDetails() {
   const popularity = Math.floor(movie.popularity / 100);
 
   function changeShowValue(whosShow) {
-    if (whosShow === "cast") {
-      setShowCast(true);
-      setShowReviews(false);
-    } else if (whosShow === "reviews") {
-      setShowCast(false);
-      setShowReviews(true);
+    const currentPath = location.pathname;
+    console.log(currentPath);
+
+    if (currentPath.includes(whosShow)) {
+      navigate(`/movies/${movieId}`);
+    } else {
+      navigate(`/movies/${movieId}/${whosShow}`);
     }
   }
 
@@ -88,12 +86,11 @@ export default function MovieDetails() {
               </li>
             </ul>
           </div>
-          {showCast && <MovieCast castId={movieId} />}
-          {showReviews && <MovieReviews reviewsId={movieId} />}
         </>
       ) : (
         <p>Loading...</p>
       )}
+      <Outlet />
     </main>
   );
 }

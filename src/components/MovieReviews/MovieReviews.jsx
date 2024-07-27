@@ -1,15 +1,18 @@
 import { fetchReviewsMovie } from "../../moviesApi";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import css from "./MovieReviews.module.css";
 
 export default function MovieReviews({ reviewsId }) {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { movieId } = useParams();
 
   useEffect(() => {
     async function getReviews() {
       try {
-        const response = await fetchReviewsMovie(reviewsId);
+        const response = await fetchReviewsMovie(movieId);
         setReviews(response);
         console.log(response);
         if (response.length > 0) {
