@@ -1,11 +1,11 @@
 .movieDetails {
+  /* display: flex;
+  column-gap: 20px; */
+}
+.movieDetailsContainer {
   display: flex;
   column-gap: 20px;
 }
-/* .movieDetailsContainer {
-  display: flex;
-  column-gap: 20px;
-} */
 .movieDetailsImg {
   width: 250px;
   height: 400px;

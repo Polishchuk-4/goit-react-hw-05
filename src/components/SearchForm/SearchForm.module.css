@@ -1,0 +1,13 @@
+.searchForm {
+}
+.searchFormInput {
+  width: 250px;
+  padding: 5px 10px;
+  border: 1px solid black;
+  margin-right: 15px;
+}
+.searchFormBtn {
+  padding: 5px;
+  background-color: rgb(227, 242, 255);
+  border: 1px solid rgb(183, 221, 255);
+}
