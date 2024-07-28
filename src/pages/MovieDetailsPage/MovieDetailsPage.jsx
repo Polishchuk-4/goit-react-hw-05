@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import css from "./MovieDetails.module.css";
+import css from "./MovieDetailsPage.module.css";
 
 export default function MovieDetails() {
   const { movieId } = useParams();

@@ -14,7 +14,6 @@ export default function MovieReviews({ reviewsId }) {
       try {
         const response = await fetchReviewsMovie(movieId);
         setReviews(response);
-        console.log(response);
         if (response.length > 0) {
           setLoading(true);
         }
@@ -23,7 +22,7 @@ export default function MovieReviews({ reviewsId }) {
       }
     }
     getReviews();
-  }, []);
+  }, [movieId]);
   return (
     <ul className={css.movieReviewsList}>
       {loading ? (

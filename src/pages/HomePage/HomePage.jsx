@@ -4,7 +4,7 @@ import Title from "../../components/Title/Title";
 import { useState, useEffect } from "react";
 import { fetchTrendingMovies } from "../../moviesApi";
 
-import css from "./Home.module.css";
+import css from "./HomePage.module.css";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -20,7 +20,7 @@ export default function Home() {
       }
     }
     getTrendingMovies();
-  }, []);
+  }, [movies]);
   return (
     <div className={css.home}>
       <Title />

@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { fetchInputMovies } from "../../moviesApi";
 
-import css from "./Movies.module.css";
+import css from "./MoviesPage.module.css";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);

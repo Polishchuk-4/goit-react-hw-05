@@ -19,7 +19,7 @@ export default function MovieCast() {
       }
     }
     getCast();
-  }, []);
+  }, [movieId]);
   return (
     <ul className={css.movieCastList}>
       {cast.map((item, index) => {
