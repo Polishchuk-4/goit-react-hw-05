@@ -1,8 +1,8 @@
 import { fetchMovieById } from "../../moviesApi";
 import { Link, Outlet } from "react-router-dom";
 
-import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 
 import css from "./MovieDetailsPage.module.css";
 
@@ -10,8 +10,7 @@ export default function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState("");
   const location = useLocation();
-  const backLinkHref = location.state ?? "/";
-  const navigate = useNavigate();
+  const backLinkHref = useRef(location.state ?? "/");
 
   useEffect(() => {
     async function getMovie() {
@@ -28,17 +27,6 @@ export default function MovieDetails() {
 
   const releaseYear = new Date(movie.release_date).getFullYear();
   const popularity = Math.floor(movie.popularity / 100);
-
-  function changeShowValue(whosShow) {
-    const currentPath = location.pathname;
-    console.log(currentPath);
-
-    if (currentPath.includes(whosShow)) {
-      navigate(`/movies/${movieId}`);
-    } else {
-      navigate(`/movies/${movieId}/${whosShow}`);
-    }
-  }
 
   return (
     <main className={css.movieDetails}>
@@ -77,12 +65,10 @@ export default function MovieDetails() {
             <p className={css.movieDetailsText}>Additional information</p>
             <ul className={css.movieDetailsListInfo}>
               <li>
-                <button onClick={() => changeShowValue("cast")}>Cast</button>
+                <Link to={`cast`}>Cast</Link>
               </li>
               <li>
-                <button onClick={() => changeShowValue("reviews")}>
-                  Reviews
-                </button>
+                <Link to={`reviews`}>Reviews</Link>
               </li>
             </ul>
           </div>

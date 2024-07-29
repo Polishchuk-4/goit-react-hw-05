@@ -20,7 +20,7 @@ export default function Home() {
       }
     }
     getTrendingMovies();
-  }, [movies]);
+  }, []);
   return (
     <div className={css.home}>
       <Title />
