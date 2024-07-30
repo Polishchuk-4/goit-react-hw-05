@@ -32,7 +32,7 @@ export default function MovieDetails() {
     <main className={css.movieDetails}>
       {movie ? (
         <>
-          <Link to={backLinkHref}>Go back</Link>
+          <Link to={backLinkHref.current}>Go back</Link>
           <div className={css.movieDetailsContainer}>
             <img
               className={css.movieDetailsImg}
